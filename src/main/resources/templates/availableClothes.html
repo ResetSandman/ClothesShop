@@ -77,7 +77,8 @@
         <td th:text="${b.sellPrice}"></td>
         <td th:text="${b.shopPrice}"></td>
         <td>
-            <a class="btn btn-secondary btn-sm">Add To MyClothes</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/myList/{id}(id=${b.id})}">Add To MyClothes</a>
+
         </td>
     </tr>
 

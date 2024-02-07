@@ -1,13 +1,13 @@
 package com.example.testbookshtml.controller;
 
 import com.example.testbookshtml.model.Clothes;
+import com.example.testbookshtml.model.MyClothesList;
 import com.example.testbookshtml.service.ClothesService;
+import com.example.testbookshtml.service.MyClothesListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -17,8 +17,12 @@ public class ClothesController {
 
     private final ClothesService clothesService;
 
-    public ClothesController(ClothesService clothesService) {
+    private final MyClothesListService myClothesListService;
+
+
+    public ClothesController(ClothesService clothesService, MyClothesListService myClothesListService) {
         this.clothesService = clothesService;
+        this.myClothesListService = myClothesListService;
     }
 
 
@@ -41,7 +45,9 @@ public class ClothesController {
     }
 
     @GetMapping("/my_clothes")
-    public String myClothes(){
+    public String getMyClothes(Model model){
+        List<MyClothesList> all = myClothesListService.getAllMyClothes();
+        model.addAttribute("myClothesList", all);
         return "myClothes";
     }
 
@@ -51,6 +57,16 @@ public class ClothesController {
         clothesService.save(c);
         return "redirect:/available_clothes";
     }
+
+    @RequestMapping("/myList/{id}")
+    public String getMyList(@PathVariable("id") Long id){
+        Clothes c = clothesService.getClothesByID(id);
+        MyClothesList mc = new MyClothesList(c.getId(),c.getType(),c.getBrand(),c.getSize(),c.getSellPrice(),c.getShopPrice());
+        myClothesListService.saveMyClothes(mc);
+        return "redirect:/my_clothes";
+    }
+
+
 
 
 }
