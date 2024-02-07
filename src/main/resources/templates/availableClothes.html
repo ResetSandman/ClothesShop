@@ -1,25 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothes Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Clothes Store</title>
+
     <style>
         body {
-            background-color: #f8f9fa; /* Kolor tła */
-            background-image: url('https://www.hdwallpapers.in/download/technology_circuit_lines_dots_4k_5k_hd_technology-HD.jpg'); /* Obraz tła */
-            background-size: cover; /* Ustawienie tła na pełny ekran */
-            /*background-repeat: no-repeat; !* Zapobieganie powtarzaniu się tła *!*/
+            background-image: url('https://www.hdwallpapers.in/download/technology_circuit_lines_dots_4k_5k_hd_technology-HD.jpg');
+            background-size: cover; /* Zapewnia, że obraz będzie wypełniał całe tło */
         }
 
-        /* Styl dla tekstu */
-        .text-on-background {
-            color: #ffffff; /* Biały kolor tekstu */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Dodanie cienia dla lepszej czytelności */
+
+        /* Dodane reguły CSS */
+        table {
+            color: white; /* Kolor tekstu w tabeli */
+        }
+
+        th,
+        td {
+            border-color: white; /* Kolor granicy komórek tabeli */
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important; /* Kolor tekstu linków w nawigacji */
         }
     </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container-fluid">
@@ -45,31 +56,45 @@
         </div>
     </div>
 </nav>
-
-<div class="container text-center my-5">
-    <h1 class="text-on-background">SKLEP I ZARZĄDZANIE UBRANIAMI</h1>
-    <h6 class="text-on-background"><em>"Kiedy latem na niebie<br>
-        słońce jasno praży<br>
-        w kąpielowym stroju<br>
-        siedzę na plaży.<br>
-
-        Kiedy mróz siarczysty<br>
-        panuje na dworze<br>
-        w czapce i szaliku<br>
-        spacerować mogę.<br>
-
-        Kiedy jesienią<br>
-        deszcz ciągle pada<br>
-        wtedy bardzo chętnie<br>
-        kalosze zakładam.<br>
-
-        Wiosną wyciągam<br>
-        buty sportowe<br>
-        w dresie po parku<br>
-        pobiegać w nich mogę.</em>"</h6>
-    <img src="/images/ClothesPNG.jpg" width="700px" />
+<div class="container">
+<table class="table table-dark table-striped table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Type</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Size</th>
+        <th scope="col">SellPrice</th>
+        <th scope="col">ShopPrice</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+    </tr>
+    </tbody>
+</table>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
